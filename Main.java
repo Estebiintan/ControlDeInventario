@@ -27,7 +27,15 @@ public class Main {
     inventario.add(mouse);
 
     System.out.println("Total de productos: " + inventario.size());
+    System.out.println();
 
+
+    for (Producto p : inventario) {
+        System.out.println("Nombre: " + p.nombre);
+        System.out.println("Precio: " + p.precio);
+        System.out.println("Cantidad: " + p.cantidad);
+        System.out.println();
+     }
     }
 
 }
