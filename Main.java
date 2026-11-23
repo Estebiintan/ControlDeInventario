@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
+    String nombreBuscado = "Mouse";
+    Producto productoEncontrado = null;
 
     Producto teclado = new Producto("Teclado",80000, 15);
 
@@ -35,7 +37,24 @@ public class Main {
         System.out.println("Precio: " + p.precio);
         System.out.println("Cantidad: " + p.cantidad);
         System.out.println();
-     }
-    }
 
+        if (p.nombre.equals(nombreBuscado)) {
+            productoEncontrado = p;
+            }
+     }
+
+    
+
+        // AQUÍ TERMINA EL FOR-EACH
+
+        if (productoEncontrado != null) {
+            System.out.println("Producto encontrado");
+            System.out.println("Nombre: " + productoEncontrado.nombre);
+            System.out.println("Precio: " + productoEncontrado.precio);
+            System.out.println("Cantidad: " + productoEncontrado.cantidad);
+            System.out.println();
+        } else {
+            System.out.println("Producto no encontrado");
+        }
+    }
 }
