@@ -66,6 +66,7 @@ public class Main {
             inventario.remove(productoEncontrado);
             // 16. Mostramos la cantidad de productos que quedan en el inventario
             System.out.println("Total de Productos: " + inventario.size());
+            // 17. Mostramos los productos restantes en el inventario
             System.out.println("Productos restantes: ");
             for (Producto p : inventario) {
                 System.out.println("- " + p.nombre);
@@ -73,7 +74,7 @@ public class Main {
 
         } else {
 
-            // 17. Si no encontramos el producto, mostramos este mensaje
+            // 18. Si no encontramos el producto, mostramos este mensaje
             System.out.println("Producto no encontrado");
         }
     }
