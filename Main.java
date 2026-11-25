@@ -13,7 +13,7 @@ public class Main {
         Producto teclado = new Producto("Teclado", 80000, 15);
         Producto mouse = new Producto("Mouse", 45000, 20);
     
-    // 4. Mostramos los datos iniciales del teclado
+        // 4. Mostramos los datos iniciales del teclado
         System.out.println(teclado.nombre);
         System.out.println(teclado.precio);
         System.out.println(teclado.cantidad);
@@ -56,23 +56,20 @@ public class Main {
                 productoEncontrado = p;
             }
         }
-
-        // 13. Cantidad de unidades que queremos agregar al producto
-        int cantidadAgregar = 5;
-
-        // 14. Comprobamos si encontramos el producto
+        
+        // 13. Comprobamos si encontramos el producto
         if (productoEncontrado != null) {
 
-            System.out.println("Producto encontrado");
-            System.out.println("Nombre: " + productoEncontrado.nombre);
-            System.out.println("Precio: " + productoEncontrado.precio);
-            System.out.println("Cantidad inicial: " + productoEncontrado.cantidad);
-
-            // 15. Aumentamos la cantidad del producto encontrado
-            productoEncontrado.cantidad += cantidadAgregar;
-
-            // 16. Mostramos la nueva cantidad
-            System.out.println("Cantidad actualizada: " + productoEncontrado.cantidad);
+            // 14. Informamos que encontramos el producto 
+            System.out.println("Producto encontrado: " + productoEncontrado.nombre);
+            // 15. Eliminamos el objeto del ArrayList inventario
+            inventario.remove(productoEncontrado);
+            // 16. Mostramos la cantidad de productos que quedan en el inventario
+            System.out.println("Total de Productos: " + inventario.size());
+            System.out.println("Productos restantes: ");
+            for (Producto p : inventario) {
+                System.out.println("- " + p.nombre);
+            }
 
         } else {
 
