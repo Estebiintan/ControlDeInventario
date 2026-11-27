@@ -3,79 +3,31 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        // 1. Variable con el nombre del producto que queremos buscar
-        String nombreBuscado = "Mouse";
+        // Creamos dos productos
+        Producto teclado = new Producto("Teclado", 100.0, 20);
+        Producto mouse = new Producto("Mouse", 50.0, 30);
 
-        // 2. Inicializamos la variable en null porque todavía no encontramos ningún producto
-        Producto productoEncontrado = null;
-
-        // 3. Creamos los objetos Producto utilizando su constructor
-        Producto teclado = new Producto("Teclado", 80000, 15);
-        Producto mouse = new Producto("Mouse", 45000, 20);
-    
-        // 4. Mostramos los datos iniciales del teclado
-        System.out.println(teclado.nombre);
-        System.out.println(teclado.precio);
-        System.out.println(teclado.cantidad);
-
-        // 5. Actualizamos directamente la cantidad del teclado
-        teclado.cantidad = teclado.cantidad + 10;
-
-        // 6. Mostramos la cantidad actualizada del teclado
-        System.out.println("Cantidad actualizada: " + teclado.cantidad);
-
-        // 7. Mostramos los datos iniciales del mouse
-        System.out.println(mouse.nombre);
-        System.out.println(mouse.precio);
-        System.out.println(mouse.cantidad);
-
-        // 8. Creamos el ArrayList que almacenará los productos
+        // Creamos el ArrayList para almacenar los productos
         ArrayList<Producto> inventario = new ArrayList<>();
 
-        // 9. Agregamos los objetos al inventario
+        // Agregamos los productos al inventario
         inventario.add(teclado);
         inventario.add(mouse);
+        inventario.add(new Producto("Monitor", 200.0, 15));
 
-        // 10. Mostramos cuántos productos tenemos registrados
-        System.out.println("Total de productos: " + inventario.size());
-        System.out.println();
-
-        // 11. Recorremos todos los productos del inventario
-        for (Producto p : inventario) {
-
-            // Mostramos los datos de cada producto
-            System.out.println("Nombre: " + p.nombre);
-            System.out.println("Precio: " + p.precio);
-            System.out.println("Cantidad: " + p.cantidad);
-            System.out.println();
-
-            // 12. Comparamos el nombre del producto con el nombre buscado
-            if (p.nombre.equals(nombreBuscado)) {
-
-                // Si coinciden, guardamos la referencia al objeto encontrado
-                productoEncontrado = p;
-            }
-        }
+        // Comprobamos si el mouse existe en el inventario usando el método contains() que utiliza equals() para la comparación
+        System.out.println(inventario.contains(mouse)); // true
         
-        // 13. Comprobamos si encontramos el producto
-        if (productoEncontrado != null) {
+        // Comprobamos si existe un producto llamado Celular en el inventario, aunque no lo hayamos agregado, para ver si el método equals() funciona correctamente
+        System.out.println(inventario.contains(new Producto("Celular", 1000.0, 5))); // false
 
-            // 14. Informamos que encontramos el producto 
-            System.out.println("Producto encontrado: " + productoEncontrado.nombre);
-            // 15. Eliminamos el objeto del ArrayList inventario
-            inventario.remove(productoEncontrado);
-            // 16. Mostramos la cantidad de productos que quedan en el inventario
-            System.out.println("Total de Productos: " + inventario.size());
-            // 17. Mostramos los productos restantes en el inventario
-            System.out.println("Productos restantes: ");
-            for (Producto p : inventario) {
-                System.out.println("- " + p.nombre);
-            }
-
-        } else {
-
-            // 18. Si no encontramos el producto, mostramos este mensaje
-            System.out.println("Producto no encontrado");
+        // Evita agregar un producto duplicado (mismo nombre) al inventario
+        if (!inventario.contains(new Producto("mouse", 50.0, 30))) {
+            inventario.add(new Producto("mouse", 50.0, 30));
         }
+
+        // Mostramos la cantidad de productos en el inventario después de intentar agregar un duplicado
+        System.out.println("Total de productos: " + inventario.size());
     }
+
 }
