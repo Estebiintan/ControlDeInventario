@@ -21,13 +21,27 @@ public class Main {
         // Comprobamos si existe un producto llamado Celular en el inventario, aunque no lo hayamos agregado, para ver si el método equals() funciona correctamente
         System.out.println(inventario.contains(new Producto("Celular", 1000.0, 5))); // false
 
+        // Comparte la referencia del objeto teclado
+        Producto nuevoProducto = teclado; // Intentamos agregar un producto con el mismo nombre que uno existente
+
+        nuevoProducto.cantidad = 50; // Modifica también la cantidad de teclado
+
         // Evita agregar un producto duplicado (mismo nombre) al inventario
-        if (!inventario.contains(new Producto("mouse", 50.0, 30))) {
-            inventario.add(new Producto("mouse", 50.0, 30));
+        if (!inventario.contains(nuevoProducto)) {
+            System.out.println("Producto agregado");
+            inventario.add(nuevoProducto);
+        } else {
+            // Si ya existe, evitamos agregar un duplicado
+            System.out.println("El producto ya existe en el inventario. No se agregará un duplicado.");
         }
+
 
         // Mostramos la cantidad de productos en el inventario después de intentar agregar un duplicado
         System.out.println("Total de productos: " + inventario.size());
+
+        // Comprobamos que la modificación de nuevoProducto
+        // también afectó al objeto teclado porque comparten la misma referencia
+        System.out.println("Cantidad de teclados: " + teclado.cantidad); // 50
     }
 
 }
